@@ -1,0 +1,30 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+
+development:
+  <<: *default
+  database: crazy4cats_development
+  username: cristobal
+  password: admin1234
+  host: localhost
+  port: 5432
+
+test:
+  <<: *default
+  database: crazy4cats_test
+  username: cristobal
+  password: admin1234
+  host: localhost
+  port: 5432
+
+production:
+  <<: *default
+  database: crazy4cats_production
+  username: crazy4cats
+  password: <%= ENV["CRAZY4CATS_DATABASE_PASSWORD"] %>
